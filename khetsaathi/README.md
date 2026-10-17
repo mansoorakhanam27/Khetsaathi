@@ -19,6 +19,16 @@ python server.py
 
 Open `http://127.0.0.1:8765`.
 
+## Deploy a demo on Render
+
+1. Push this repository to GitHub and create a **Web Service** on Render connected to the repository.
+2. Set **Root Directory** to `khetsaathi`.
+3. Set **Build Command** to `echo "No dependencies to install"` and **Start Command** to `python server.py`.
+4. Add the environment variable `KHETSAATHI_HOST` with value `0.0.0.0`. The app reads Render's `PORT` variable automatically.
+5. Deploy, open the generated `onrender.com` URL, and try the sample case.
+
+Hosted AI is optional and stays off unless a user opts in. Do not add an API key unless you understand that the public service could use that key when users explicitly enable hosted AI. Free web services may spin down while idle, so the first visit can take longer.
+
 Optional hosted explanation:
 
 ```powershell
@@ -39,3 +49,8 @@ The model's labels and examples are synthetic and generated from a simple demons
 
 ## Project materials
 
+- [Lean Canvas](../output/pdf/KhetSathi_Lean_Canvas.pdf)
+- [Concept Note](../output/pdf/KhetSathi_Concept_Note.pdf)
+- [Project Presentation](../output/pptx/KhetSathi_Project_Presentation.pptx)
+- [Model Card](MODEL_CARD.md)
+- [API Reference](API_REFERENCE.md)

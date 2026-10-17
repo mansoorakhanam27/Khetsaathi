@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
 HOST = os.getenv("KHETSAATHI_HOST", "127.0.0.1")
-PORT = int(os.getenv("KHETSAATHI_PORT", "8765"))
+PORT = int(os.getenv("PORT", os.getenv("KHETSAATHI_PORT", "8765")))
 
 # All training examples are simulated. This makes the prototype reproducible,
 # but the resulting score is not evidence of field accuracy.
