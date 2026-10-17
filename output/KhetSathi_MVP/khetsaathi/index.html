@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173d35">
+  <title>KhetSathi | Crop support demo</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="KhetSathi home"><span class="brand-mark">K</span><span>Khet<span class="brand-light">Sathi</span></span></a>
+    <nav aria-label="Main navigation"><a href="#assessment">Assessment</a><a href="#how-it-works">How it works</a><a href="#about">About this demo</a></nav>
+    <span class="mode-pill"><i></i> Local demo</span>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">FIELD SUPPORT · TOMATO</p>
+        <h1>Make the next<br><em>farm decision</em> clearer.</h1>
+        <p class="hero-deck">Bring crop observations and recent conditions together. KhetSathi explains a screening signal and helps prepare a follow-up with an advisor.</p>
+        <div class="hero-tags"><span>Machine learning</span><span>Grounded AI</span><span>Human-confirmed agent</span></div>
+      </div>
+      <div class="hero-note">
+        <div class="note-icon">✳</div>
+        <p class="note-label">A thoughtful first step</p>
+        <p class="note-text">Use the model output to organize observations, then confirm decisions with a local agricultural expert.</p>
+        <div class="note-rule"></div><span class="note-foot">BUILT FOR LEARNING · NOT FIELD DIAGNOSIS</span>
+      </div>
+    </section>
+
+    <section class="notice" role="note"><span class="notice-icon">!</span><p><strong>Prototype notice</strong> — this demo model uses synthetic data only. Its score is not validated for real farms and must not guide treatment decisions.</p><button id="dismiss-notice" aria-label="Dismiss notice">×</button></section>
+
+    <section id="assessment" class="work-area">
+      <div class="section-heading"><div><p class="eyebrow">01 / FIELD CHECK</p><h2>Describe today’s conditions</h2></div><button id="reset-form" class="text-button" type="button">Reset sample</button></div>
+      <div class="columns">
+        <form id="assessment-form" class="form-panel">
+          <div class="panel-head"><div><h3>Crop & weather</h3><p>A short check-in is enough to start.</p></div><span class="step-mark">01</span></div>
+          <label class="field">Crop stage<select name="stage"><option value="seedling">Seedling</option><option value="vegetative">Vegetative</option><option value="flowering">Flowering</option><option value="fruiting" selected>Fruiting</option></select></label>
+          <div class="field-grid">
+            <label class="field">Temperature <span class="unit">°C</span><input name="temp" type="number" min="-5" max="55" step="0.5" value="25" required></label>
+            <label class="field">Humidity <span class="unit">%</span><input name="humidity" type="number" min="0" max="100" value="86" required></label>
+            <label class="field">Recent rain <span class="unit">mm</span><input name="rain" type="number" min="0" max="250" step="0.5" value="8" required></label>
+            <label class="field">Leaf wetness <span class="unit">hours</span><input name="wetness" type="number" min="0" max="24" step="0.5" value="10" required></label>
+          </div>
+          <label class="field">Soil moisture reading <span class="unit">%</span><input name="soil_moisture" type="number" min="0" max="100" value="35" required><small>Use a sensor reading if available; otherwise use a rough field estimate.</small></label>
+          <fieldset class="symptoms"><legend>What do you notice on the leaves?</legend><label class="check-row"><input name="spots" type="checkbox" checked><span class="check-box"></span><span><b>Spots or marks</b><small>Visible discolouration or markings</small></span></label><label class="check-row"><input name="yellowing" type="checkbox"><span class="check-box"></span><span><b>Yellowing</b><small>Leaves look paler or yellow</small></span></label></fieldset>
+          <div class="consent-box"><label class="check-row hosted"><input id="hosted-ai" type="checkbox"><span class="check-box"></span><span><b>Use optional hosted AI explanation</b><small>If enabled and configured, crop inputs and guide snippets are sent to OpenAI. Offline mode is the default.</small></span></label></div>
+          <button id="run-button" class="primary-button" type="submit"><span>Run assessment</span><span class="button-arrow">→</span></button>
+          <p id="form-error" class="form-error" role="alert"></p>
+        </form>
+
+        <section id="results" class="results-panel" aria-live="polite">
+          <div class="empty-state"><div class="empty-orbit"><span>✳</span></div><p class="eyebrow">YOUR FIELD BRIEF</p><h3>Ready when you are</h3><p>Enter a few observations, then run an assessment to see how the ML, AI and agent workflow fit together.</p><button id="try-sample" class="secondary-button" type="button">Try the sample case <span>↗</span></button></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how-section">
+      <div class="section-heading"><div><p class="eyebrow">02 / THE WORKFLOW</p><h2>Three steps, one human decision</h2></div><p class="section-aside">KhetSathi supports the conversation.<br>The farmer and advisor stay in control.</p></div>
+      <div class="workflow">
+        <article><span class="workflow-num">01</span><h3>Estimate</h3><p>A small ML model scores a synthetic disease-pressure pattern from the entered signals.</p><span class="workflow-label">MACHINE LEARNING</span></article>
+        <article><span class="workflow-num">02</span><h3>Explain</h3><p>A retrieval layer brings forward reviewed safety guidance. Optional hosted AI rewrites it in plain language.</p><span class="workflow-label">GROUNDED AI</span></article>
+        <article><span class="workflow-num">03</span><h3>Follow through</h3><p>An agent checks inputs, calls tools, and drafts a follow-up. It waits for your confirmation.</p><span class="workflow-label">AGENTIC AI</span></article>
+      </div>
+    </section>
+
+    <section id="about" class="about-strip"><div><p class="eyebrow">PROJECT INTENT</p><h2>Useful guidance starts with local knowledge.</h2><p>This student prototype explores SDG 2.4, 6.4 and 13.1 through safer crop-risk awareness and more considered irrigation checks. Impact has not been measured.</p></div><div class="sdg-list"><span><b>02</b> ZERO HUNGER</span><span><b>06</b> CLEAN WATER</span><span><b>13</b> CLIMATE ACTION</span></div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">K</span><span>Khet<span class="brand-light">Sathi</span></span></a><span>Student prototype · Synthetic demonstration data · Local-first by default</span><a href="#top">Back to top ↑</a></footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
